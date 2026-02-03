@@ -1,0 +1,362 @@
+[
+  {
+    "state": "Andhra Pradesh",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 780,
+    "crime_index": 55,
+    "severity": "ELEVATED",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Arunachal Pradesh",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 32,
+    "crime_index": 8,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Assam",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 1460,
+    "crime_index": 72,
+    "severity": "HIGH",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Bihar",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 2980,
+    "crime_index": 100,
+    "severity": "CRITICAL",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Chhattisgarh",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 980,
+    "crime_index": 60,
+    "severity": "ELEVATED",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Delhi",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 505,
+    "crime_index": 40,
+    "severity": "MODERATE",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Goa",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 78,
+    "crime_index": 12,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Gujarat",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 1120,
+    "crime_index": 58,
+    "severity": "ELEVATED",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Haryana",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 1125,
+    "crime_index": 58,
+    "severity": "ELEVATED",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Himachal Pradesh",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 92,
+    "crime_index": 14,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Jammu & Kashmir",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 180,
+    "crime_index": 22,
+    "severity": "MODERATE",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Jharkhand",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 1620,
+    "crime_index": 78,
+    "severity": "HIGH",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Karnataka",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 1020,
+    "crime_index": 56,
+    "severity": "ELEVATED",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Kerala",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 330,
+    "crime_index": 28,
+    "severity": "MODERATE",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Madhya Pradesh",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 1980,
+    "crime_index": 85,
+    "severity": "CRITICAL",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Maharashtra",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 2100,
+    "crime_index": 88,
+    "severity": "CRITICAL",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Manipur",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 62,
+    "crime_index": 10,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Meghalaya",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 54,
+    "crime_index": 9,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Mizoram",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 28,
+    "crime_index": 6,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Nagaland",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 36,
+    "crime_index": 7,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Odisha",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 1320,
+    "crime_index": 70,
+    "severity": "HIGH",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Punjab",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 610,
+    "crime_index": 35,
+    "severity": "MODERATE",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Rajasthan",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 1740,
+    "crime_index": 82,
+    "severity": "CRITICAL",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Sikkim",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 18,
+    "crime_index": 4,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Tamil Nadu",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 1550,
+    "crime_index": 75,
+    "severity": "HIGH",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Telangana",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 1180,
+    "crime_index": 62,
+    "severity": "HIGH",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Tripura",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 48,
+    "crime_index": 9,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Uttar Pradesh",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 2850,
+    "crime_index": 98,
+    "severity": "CRITICAL",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Uttarakhand",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 110,
+    "crime_index": 16,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "West Bengal",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 1340,
+    "crime_index": 72,
+    "severity": "HIGH",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Andaman & Nicobar Islands",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 12,
+    "crime_index": 2,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Chandigarh",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 38,
+    "crime_index": 6,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Dadra & Nagar Haveli and Daman & Diu",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 26,
+    "crime_index": 5,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Lakshadweep",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 2,
+    "crime_index": 1,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Ladakh",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 14,
+    "crime_index": 3,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Puducherry",
+    "crime_type": "murder_homicide",
+    "year": 2025,
+    "total_crimes": 44,
+    "crime_index": 8,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  }
+]

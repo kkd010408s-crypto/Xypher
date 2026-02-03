@@ -1,0 +1,352 @@
+[
+  {
+    "state": "Andhra Pradesh",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 25503,
+    "crime_index": 39,
+    "severity": "MODERATE",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Arunachal Pradesh",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 335,
+    "crime_index": 1,
+    "severity": "LOW",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Assam",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 14148,
+    "crime_index": 22,
+    "severity": "MODERATE",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Bihar",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 20252,
+    "crime_index": 31,
+    "severity": "MODERATE",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Chhattisgarh",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 8693,
+    "crime_index": 13,
+    "severity": "LOW",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Goa",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 273,
+    "crime_index": 0,
+    "severity": "LOW",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Gujarat",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 7731,
+    "crime_index": 12,
+    "severity": "LOW",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Haryana",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 16743,
+    "crime_index": 25,
+    "severity": "MODERATE",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Himachal Pradesh",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 1551,
+    "crime_index": 2,
+    "severity": "LOW",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Jammu & Kashmir",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 3716,
+    "crime_index": 6,
+    "severity": "LOW",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Jharkhand",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 7678,
+    "crime_index": 12,
+    "severity": "LOW",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Karnataka",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 17813,
+    "crime_index": 27,
+    "severity": "MODERATE",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Kerala",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 15213,
+    "crime_index": 23,
+    "severity": "MODERATE",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Madhya Pradesh",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 32765,
+    "crime_index": 50,
+    "severity": "ELEVATED",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Maharashtra",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 45331,
+    "crime_index": 69,
+    "severity": "HIGH",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Manipur",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 248,
+    "crime_index": 0,
+    "severity": "LOW",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Meghalaya",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 690,
+    "crime_index": 1,
+    "severity": "LOW",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Mizoram",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 147,
+    "crime_index": 0,
+    "severity": "LOW",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Nagaland",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 49,
+    "crime_index": 0,
+    "severity": "LOW",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Odisha",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 23648,
+    "crime_index": 36,
+    "severity": "MODERATE",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Punjab",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 5572,
+    "crime_index": 8,
+    "severity": "LOW",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Rajasthan",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 45058,
+    "crime_index": 69,
+    "severity": "HIGH",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Sikkim",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 179,
+    "crime_index": 0,
+    "severity": "LOW",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Tamil Nadu",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 9207,
+    "crime_index": 14,
+    "severity": "LOW",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Telangana",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 22066,
+    "crime_index": 34,
+    "severity": "MODERATE",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Tripura",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 752,
+    "crime_index": 1,
+    "severity": "LOW",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Uttar Pradesh",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 65743,
+    "crime_index": 100,
+    "severity": "CRITICAL",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Uttarakhand",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 4337,
+    "crime_index": 7,
+    "severity": "LOW",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "West Bengal",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 34738,
+    "crime_index": 53,
+    "severity": "ELEVATED",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Andaman & Nicobar Islands",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 178,
+    "crime_index": 0,
+    "severity": "LOW",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Chandigarh",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 325,
+    "crime_index": 0,
+    "severity": "LOW",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Dadra & Nagar Haveli and Daman & Diu",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 126,
+    "crime_index": 0,
+    "severity": "LOW",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Delhi",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 14247,
+    "crime_index": 22,
+    "severity": "MODERATE",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Lakshadweep",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 16,
+    "crime_index": 0,
+    "severity": "LOW",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  },
+  {
+    "state": "Puducherry",
+    "crime_type": "crimes_against_women",
+    "year": 2025,
+    "total_crimes": 200,
+    "crime_index": 0,
+    "severity": "LOW",
+    "data_type": "official_ncrb_processed",
+    "note": "Processed from NCRB Crimes Against Women 2025 state-wise totals."
+  }
+]

@@ -1,0 +1,362 @@
+[
+  {
+    "state": "Andhra Pradesh",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 5200,
+    "crime_index": 55,
+    "severity": "ELEVATED",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Arunachal Pradesh",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 210,
+    "crime_index": 6,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Assam",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 2600,
+    "crime_index": 40,
+    "severity": "MODERATE",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Bihar",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 4800,
+    "crime_index": 62,
+    "severity": "HIGH",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Chhattisgarh",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 2300,
+    "crime_index": 35,
+    "severity": "MODERATE",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Delhi",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 7400,
+    "crime_index": 82,
+    "severity": "CRITICAL",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Goa",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 420,
+    "crime_index": 12,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Gujarat",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 6100,
+    "crime_index": 58,
+    "severity": "ELEVATED",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Haryana",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 5600,
+    "crime_index": 52,
+    "severity": "ELEVATED",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Himachal Pradesh",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 380,
+    "crime_index": 10,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Jammu & Kashmir",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 620,
+    "crime_index": 15,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Jharkhand",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 2900,
+    "crime_index": 42,
+    "severity": "ELEVATED",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Karnataka",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 6900,
+    "crime_index": 68,
+    "severity": "HIGH",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Kerala",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 4100,
+    "crime_index": 45,
+    "severity": "ELEVATED",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Madhya Pradesh",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 5300,
+    "crime_index": 57,
+    "severity": "ELEVATED",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Maharashtra",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 9200,
+    "crime_index": 100,
+    "severity": "CRITICAL",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Manipur",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 260,
+    "crime_index": 8,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Meghalaya",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 240,
+    "crime_index": 7,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Mizoram",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 180,
+    "crime_index": 5,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Nagaland",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 200,
+    "crime_index": 6,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Odisha",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 3600,
+    "crime_index": 48,
+    "severity": "ELEVATED",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Punjab",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 3900,
+    "crime_index": 46,
+    "severity": "ELEVATED",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Rajasthan",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 4400,
+    "crime_index": 54,
+    "severity": "ELEVATED",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Sikkim",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 140,
+    "crime_index": 4,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Tamil Nadu",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 7200,
+    "crime_index": 72,
+    "severity": "HIGH",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Telangana",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 6500,
+    "crime_index": 65,
+    "severity": "HIGH",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Tripura",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 310,
+    "crime_index": 9,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Uttar Pradesh",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 8100,
+    "crime_index": 88,
+    "severity": "CRITICAL",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Uttarakhand",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 520,
+    "crime_index": 14,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "West Bengal",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 5700,
+    "crime_index": 60,
+    "severity": "ELEVATED",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Andaman & Nicobar Islands",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 95,
+    "crime_index": 3,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Chandigarh",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 460,
+    "crime_index": 11,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Dadra & Nagar Haveli and Daman & Diu",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 190,
+    "crime_index": 5,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Lakshadweep",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 30,
+    "crime_index": 1,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Ladakh",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 85,
+    "crime_index": 2,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  },
+  {
+    "state": "Puducherry",
+    "crime_type": "economic_crime",
+    "year": 2025,
+    "total_crimes": 540,
+    "crime_index": 13,
+    "severity": "LOW",
+    "data_type": "synthetic_demo",
+    "note": "Values are realistic demo figures for hackathon visualization. Not official NCRB counts."
+  }
+]

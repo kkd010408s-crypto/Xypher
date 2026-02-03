@@ -1,138 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CRIME.DB // RESTRICTED ACCESS</title>
+  <title>XYPHER // INTELLIGENCE ARCHIVE</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Share+Tech+Mono&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet" />
 
-  <style>
-    :root {
-      --neon-red: #ff3333;
-      --bg-dark: #050505;
-    }
-
-    body {
-      font-family: "Courier Prime", monospace;
-      background-color: var(--bg-dark);
-      color: #d1d5db;
-      overflow-x: hidden;
-    }
-
-    .font-tech {
-      font-family: "Share Tech Mono", monospace;
-    }
-
-    /* Glitch Animation */
-    .glitch {
-      position: relative;
-    }
-
-    .glitch::before,
-    .glitch::after {
-      content: attr(data-text);
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-    }
-
-    .glitch::before {
-      left: 2px;
-      text-shadow: -1px 0 #ff00c1;
-      animation: glitch-anim 2s infinite linear alternate-reverse;
-    }
-
-    .glitch::after {
-      left: -2px;
-      text-shadow: -1px 0 #00fff9;
-      animation: glitch-anim2 2s infinite linear alternate-reverse;
-    }
-
-    @keyframes glitch-anim {
-      0% { clip: rect(10px, 9999px, 60px, 0); }
-      100% { clip: rect(30px, 9999px, 90px, 0); }
-    }
-
-    @keyframes glitch-anim2 {
-      0% { clip: rect(20px, 9999px, 80px, 0); }
-      100% { clip: rect(50px, 9999px, 100px, 0); }
-    }
-
-    /* Scanlines */
-    .scanlines {
-      background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0),
-        rgba(0, 0, 0, 0.2)
-      );
-      background-size: 100% 4px;
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 50;
-      opacity: 0.5;
-    }
-
-    /* Fingerprint Scan Beam */
-    .fingerprint-scan {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .scan-beam {
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      background: var(--neon-red);
-      animation: scan-vertical 2s linear infinite;
-    }
-
-    @keyframes scan-vertical {
-      0% { top: 0%; opacity: 0; }
-      20% { opacity: 1; }
-      100% { top: 100%; opacity: 0; }
-    }
-
-    /* Hidden content */
-    .hidden-content {
-      display: none;
-      opacity: 0;
-    }
-
-    .fade-in {
-      display: block;
-      opacity: 1;
-      transition: opacity 1s ease;
-    }
-
-    /* Map Styling */
-    .sector-path {
-      fill: #171717;
-      stroke: #404040;
-      stroke-width: 1;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .sector-path:hover {
-      fill: #262626;
-      stroke: #ef4444;
-      stroke-width: 2;
-    }
-
-    .sector-path.active {
-      fill: #450a0a;
-      stroke: #ef4444;
-      stroke-width: 2;
-    }
-  </style>
+  <!-- Linked CSS file -->
+  <link rel="stylesheet" href="gemini-frontend.css" />
 </head>
 
 <body>
@@ -141,23 +21,16 @@
   <div class="scanlines"></div>
 
   <!-- LOADING SCREEN -->
-  <div
-    id="loading-screen"
-    class="fixed inset-0 flex flex-col items-center justify-center bg-black z-50"
-  >
-    <div
-      class="w-32 h-32 border-2 border-red-900/50 rounded-lg p-2 bg-neutral-900 fingerprint-scan"
-    >
+  <div id="loading-screen" class="fixed inset-0 flex flex-col items-center justify-center bg-black z-50">
+    <div class="w-32 h-32 border-2 border-red-900/50 rounded-lg p-2 bg-neutral-900 fingerprint-scan">
       <svg class="w-full h-full text-red-700" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M17.81 4.47c-.08 0-.16-.02-.23-.06C15.66 3.42 14 3 12.01 3c-1.98 0-3.86.47-5.57 1.41-.24.13-.54.04-.68-.2-.13-.24-.04-.55.2-.68C7.82 2.52 9.86 2 12.01 2c2.13 0 3.99.47 6.03 1.52.25.13.34.43.21.67-.09.18-.26.28-.44.28zM3.5 9.72c-.1 0-.2-.03-.29-.09-.23-.16-.28-.47-.12-.7.99-1.4 2.25-2.5 3.75-3.27C9.98 4.04 14 4.03 17.15 5.65c1.5.77 2.76 1.86 3.75 3.25.16.22.11.54-.12.7-.23.16-.54.11-.7-.12-.9-1.26-2.04-2.25-3.39-2.94-2.87-1.47-6.54-1.47-9.4.01-1.36.7-2.5 1.7-3.4 2.96-.08.14-.23.21-.39.21zm6.25 12.07c-.13 0-.26-.05-.35-.15-.87-.87-1.34-1.43-2.01-2.64-.69-1.23-1.05-2.73-1.05-4.34 0-2.97 2.54-5.39 5.66-5.39s5.66 2.42 5.66 5.39c0 .28-.22.5-.5.5s-.5-.22-.5-.5c0-2.42-2.09-4.39-4.66-4.39-2.57 0-4.66 1.97-4.66 4.39 0 1.44.32 2.77.93 3.85.64 1.15 1.08 1.64 1.85 2.42.19.2.19.51 0 .71-.11.1-.24.15-.37.15zm7.17-1.85c-1.19 0-2.24-.3-3.1-.89-1.49-1.01-2.38-2.65-2.38-4.39 0-.28.22-.5.5-.5s.5.22.5.5c0 1.41.72 2.74 1.94 3.56.71.48 1.54.71 2.54.71.24 0 .64-.03 1.04-.1.27-.05.53.13.58.41.05.27-.13.53-.41.58-.57.11-1.07.12-1.21.12zM14.91 22c-.04 0-.09-.01-.13-.02-1.59-.44-2.63-1.03-3.72-2.1-1.4-1.39-2.17-3.24-2.17-5.22 0-1.62 1.38-2.94 3.08-2.94 1.7 0 3.08 1.32 3.08 2.94 0 1.07.93 1.94 2.08 1.94s2.08-.87 2.08-1.94c0-3.77-3.25-6.83-7.25-6.83-2.84 0-5.44 1.58-6.61 4.03-.39.81-.59 1.76-.59 2.8 0 .78.07 2.01.67 3.61.1.26-.03.55-.29.64-.26.1-.55-.03-.64-.29-.49-1.31-.73-2.61-.73-3.96 0-1.2.23-2.29.68-3.24 1.33-2.79 4.28-4.6 7.51-4.6 4.55 0 8.25 3.51 8.25 7.83 0 1.62-1.38 2.94-3.08 2.94s-3.08-1.32-3.08-2.94c0-1.07-.93-1.94-2.08-1.94s-2.08.87-2.08 1.94c0 1.71.66 3.31 1.87 4.51.95.94 1.86 1.46 3.27 1.85.27.07.42.35.35.61-.05.23-.26.38-.47.38z"/>
+        <path
+          d="M17.81 4.47c-.08 0-.16-.02-.23-.06C15.66 3.42 14 3 12.01 3c-1.98 0-3.86.47-5.57 1.41-.24.13-.54.04-.68-.2-.13-.24-.04-.55.2-.68C7.82 2.52 9.86 2 12.01 2c2.13 0 3.99.47 6.03 1.52.25.13.34.43.21.67-.09.18-.26.28-.44.28zM3.5 9.72c-.1 0-.2-.03-.29-.09-.23-.16-.28-.47-.12-.7.99-1.4 2.25-2.5 3.75-3.27C9.98 4.04 14 4.03 17.15 5.65c1.5.77 2.76 1.86 3.75 3.25.16.22.11.54-.12.7-.23.16-.54.11-.7-.12-.9-1.26-2.04-2.25-3.39-2.94-2.87-1.47-6.54-1.47-9.4.01-1.36.7-2.5 1.7-3.4 2.96-.08.14-.23.21-.39.21zm6.25 12.07c-.13 0-.26-.05-.35-.15-.87-.87-1.34-1.43-2.01-2.64-.69-1.23-1.05-2.73-1.05-4.34 0-2.97 2.54-5.39 5.66-5.39s5.66 2.42 5.66 5.39c0 .28-.22.5-.5.5s-.5-.22-.5-.5c0-2.42-2.09-4.39-4.66-4.39-2.57 0-4.66 1.97-4.66 4.39 0 1.44.32 2.77.93 3.85.64 1.15 1.08 1.64 1.85 2.42.19.2.19.51 0 .71-.11.1-.24.15-.37.15zm7.17-1.85c-1.19 0-2.24-.3-3.1-.89-1.49-1.01-2.38-2.65-2.38-4.39 0-.28.22-.5.5-.5s.5.22.5.5c0 1.41.72 2.74 1.94 3.56.71.48 1.54.71 2.54.71.24 0 .64-.03 1.04-.1.27-.05.53.13.58.41.05.27-.13.53-.41.58-.57.11-1.07.12-1.21.12zM14.91 22c-.04 0-.09-.01-.13-.02-1.59-.44-2.63-1.03-3.72-2.1-1.4-1.39-2.17-3.24-2.17-5.22 0-1.62 1.38-2.94 3.08-2.94 1.7 0 3.08 1.32 3.08 2.94 0 1.07.93 1.94 2.08 1.94s2.08-.87 2.08-1.94c0-3.77-3.25-6.83-7.25-6.83-2.84 0-5.44 1.58-6.61 4.03-.39.81-.59 1.76-.59 2.8 0 .78.07 2.01.67 3.61.1.26-.03.55-.29.64-.26.1-.55-.03-.64-.29-.49-1.31-.73-2.61-.73-3.96 0-1.2.23-2.29.68-3.24 1.33-2.79 4.28-4.6 7.51-4.6 4.55 0 8.25 3.51 8.25 7.83 0 1.62-1.38 2.94-3.08 2.94s-3.08-1.32-3.08-2.94c0-1.07-.93-1.94-2.08-1.94s-2.08.87-2.08 1.94c0 1.71.66 3.31 1.87 4.51.95.94 1.86 1.46 3.27 1.85.27.07.42.35.35.61-.05.23-.26.38-.47.38z" />
       </svg>
       <div class="scan-beam"></div>
     </div>
 
-    <h1
-      class="text-3xl font-tech text-red-600 font-bold mt-6 glitch"
-      data-text="CRIME_DB"
-    >
+    <h1 class="text-3xl font-tech text-red-600 font-bold mt-6 glitch" data-text="CRIME_DB">
       CRIME_DB
     </h1>
 
@@ -166,261 +39,169 @@
     </p>
 
     <div class="w-64 h-2 bg-neutral-800 mt-4">
-      <div
-        id="progress-bar"
-        class="h-full bg-red-600 w-0 transition-all duration-200"
-      ></div>
+      <div id="progress-bar" class="h-full bg-red-600 w-0 transition-all duration-200"></div>
     </div>
 
     <p id="loading-percent" class="text-xs text-gray-400 mt-2">0%</p>
   </div>
 
   <!-- MAIN CONTENT -->
-  <div id="main-content" class="hidden-content min-h-screen p-10">
+  <div id="main-content" class="hidden-content min-h-screen relative z-10 overflow-hidden pb-20">
 
-    <h2 class="text-3xl text-white font-bold mb-6">
-      CRIME DATASET DASHBOARD
-    </h2>
+    <!-- SECTION 1: INTRO -->
+    <section class="min-h-screen flex flex-col items-center justify-center text-center p-6 relative">
+      <div class="absolute inset-0 bg-red-900/5 radial-gradient pointer-events-none"></div>
 
-    <!-- Dashboard Cards -->
-    <div class="grid grid-cols-4 gap-4 mb-8">
-      <div class="border border-red-900/50 bg-neutral-900/50 p-4 rounded">
-        <h3 class="text-red-500 text-sm font-bold">CRIMES VS WOMEN</h3>
-        <p class="text-2xl text-white mt-2">400,000+</p>
-        <p class="text-xs text-gray-500 mt-1">Total Reported (2025)</p>
-      </div>
-      <div class="border border-blue-900/50 bg-neutral-900/50 p-4 rounded">
-        <h3 class="text-blue-500 text-sm font-bold">CYBER CRIME</h3>
-        <p class="text-2xl text-white mt-2">65,000+</p>
-        <p class="text-xs text-gray-500 mt-1">Digital Incidents</p>
-      </div>
-      <div class="border border-green-900/50 bg-neutral-900/50 p-4 rounded">
-        <h3 class="text-green-500 text-sm font-bold">ECONOMIC CRIME</h3>
-        <p class="text-2xl text-white mt-2">180,000+</p>
-        <p class="text-xs text-gray-500 mt-1">Financial Fraud</p>
-      </div>
-      <div class="border border-orange-900/50 bg-neutral-900/50 p-4 rounded">
-        <h3 class="text-orange-500 text-sm font-bold">HOMICIDE</h3>
-        <p class="text-2xl text-white mt-2">28,000+</p>
-        <p class="text-xs text-gray-500 mt-1">Capital Offenses</p>
-      </div>
-    </div>
+      <h1 class="text-7xl md:text-9xl font-black text-red-600 tracking-tighter glitch mb-4" data-text="XYPHER">
+        XYPHER
+      </h1>
 
-    <div class="grid grid-cols-2 gap-8">
+      <h2 class="text-xl md:text-2xl text-gray-400 font-tech tracking-widest uppercase mb-12">
+        India Crime Intelligence Archive
+      </h2>
 
-      <!-- Info Panel -->
-      <div class="border border-neutral-700 p-6 relative overflow-hidden">
-        <!-- Background decoration -->
-        <div class="absolute top-0 right-0 p-2 opacity-20">
-             <svg class="w-16 h-16 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+      <div class="font-mono text-red-500 text-sm md:text-base animate-pulse">
+        > <span id="terminal-intro">ACCESSING CLASSIFIED RECORDS...</span><span class="animate-ping">_</span>
+      </div>
+
+      <div class="absolute bottom-10 animate-bounce text-gray-600">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- SECTION 2: WHAT IS XYPHER -->
+    <section
+      class="min-h-[60vh] flex items-center justify-center p-10 max-w-4xl mx-auto border-l border-red-900/30 pl-10 reveal-section">
+      <div class="space-y-6">
+        <div class="flex items-center space-x-2 text-red-500 font-tech text-xs">
+          <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+          <span>SYSTEM_ID: 884-X</span>
         </div>
-
-        <h3 id="info-name" class="text-2xl font-bold text-white">
-          SELECT STATE
-        </h3>
-
-        <p class="mt-4 text-sm text-gray-400">
-          Severity: <span id="info-severity" class="text-white font-bold"></span>
-        </p>
-
-        <div class="mt-6 space-y-4">
-            <div>
-                <div class="flex justify-between text-xs text-gray-400 mb-1">
-                    <span>Crimes vs Women</span>
-                    <span id="val-women">0</span>
-                </div>
-                <div class="w-full h-1 bg-neutral-800"><div id="bar-women" class="h-full bg-red-600 w-0"></div></div>
-            </div>
-            <div>
-                <div class="flex justify-between text-xs text-gray-400 mb-1">
-                    <span>Cyber Crime</span>
-                    <span id="val-cyber">0</span>
-                </div>
-                <div class="w-full h-1 bg-neutral-800"><div id="bar-cyber" class="h-full bg-blue-600 w-0"></div></div>
-            </div>
-            <div>
-                <div class="flex justify-between text-xs text-gray-400 mb-1">
-                    <span>Economic Crime</span>
-                    <span id="val-eco">0</span>
-                </div>
-                <div class="w-full h-1 bg-neutral-800"><div id="bar-eco" class="h-full bg-green-600 w-0"></div></div>
-            </div>
-             <div>
-                <div class="flex justify-between text-xs text-gray-400 mb-1">
-                    <span>Murder/Homicide</span>
-                    <span id="val-murder">0</span>
-                </div>
-                <div class="w-full h-1 bg-neutral-800"><div id="bar-murder" class="h-full bg-orange-600 w-0"></div></div>
-            </div>
-        </div>
-
-        <p class="mt-6 text-gray-400 text-xs italic" id="info-note">
-            Select a region on the map to view detailed statistics.
+        <p class="text-xl md:text-3xl leading-relaxed text-gray-300 font-mono">
+          <span id="typewriter-text" class="typewriter-cursor"></span>
         </p>
       </div>
+    </section>
 
-      <!-- Map -->
-      <div class="relative">
-          <h4 class="absolute top-2 left-2 text-xs text-gray-500">INDIAN REGIONAL SECTORS</h4>
-          <svg viewBox="0 0 600 400" class="w-full h-full border border-neutral-800 bg-black/50">
+    <!-- SECTION 3: WHY IT EXISTS -->
+    <section class="min-h-[80vh] flex flex-col justify-center p-10 max-w-5xl mx-auto reveal-section">
+      <h3 class="text-4xl font-bold text-white mb-12 border-b border-red-800 pb-4 inline-block w-fit">
+        <span class="text-red-600">01</span> // MISSION PROTOCOL
+      </h3>
 
-            <path
-              id="state-dl"
-              d="M 150,50 L 450,50 L 400,150 L 200,150 Z"
-              class="sector-path"
-              onclick="selectState('dl')"
-            />
-            <text x="300" y="100" fill="white" font-size="10" text-anchor="middle" class="pointer-events-none opacity-50">DELHI (NCR)</text>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="space-y-8">
+          <div class="group cursor-default">
+            <h4 class="text-xl text-red-500 font-tech mb-2 group-hover:text-red-400 transition-colors">> DECRYPTING
+              PATTERNS</h4>
+            <p
+              class="text-gray-400 leading-relaxed border-l-2 border-red-900/50 pl-4 group-hover:border-red-500 transition-all">
+              Crime patterns remain hidden in raw unstructured data. Xypher uses advanced algorithms to isolate
+              anomalies and detect behavioral shifts.
+            </p>
+          </div>
+          <div class="group cursor-default">
+            <h4 class="text-xl text-red-500 font-tech mb-2 group-hover:text-red-400 transition-colors">> PREDICTIVE
+              INTELLIGENCE</h4>
+            <p
+              class="text-gray-400 leading-relaxed border-l-2 border-red-900/50 pl-4 group-hover:border-red-500 transition-all">
+              Moving beyond static reports. We visualize trends to forecast potential hotspots and systemic
+              vulnerabilities.
+            </p>
+          </div>
+        </div>
 
-            <path
-              id="state-mp"
-              d="M 200,160 L 400,160 L 420,250 L 180,250 Z"
-              class="sector-path active"
-              onclick="selectState('mp')"
-            />
-            <text x="300" y="200" fill="white" font-size="10" text-anchor="middle" class="pointer-events-none opacity-50">MADHYA PRADESH</text>
+        <div class="relative border border-red-900/30 bg-black/50 p-6 font-tech text-xs text-red-400/80">
+          <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-red-500"></div>
+          <div class="absolute top-0 right-0 w-2 h-2 border-t border-r border-red-500"></div>
+          <div class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-red-500"></div>
+          <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-red-500"></div>
 
-            <path
-              id="state-gj"
-              d="M 20,80 L 140,60 L 190,150 L 170,250 L 50,300 Z"
-              class="sector-path"
-              onclick="selectState('gj')"
-            />
-            <text x="100" y="180" fill="white" font-size="10" text-anchor="middle" class="pointer-events-none opacity-50">GUJARAT</text>
-
-            <path
-              id="state-mh"
-              d="M 60,310 L 180,260 L 420,260 L 540,310 L 450,390 L 150,390 Z"
-              class="sector-path"
-              onclick="selectState('mh')"
-            />
-            <text x="300" y="340" fill="white" font-size="10" text-anchor="middle" class="pointer-events-none opacity-50">MAHARASHTRA</text>
-
-            <path
-              id="state-ka"
-              d="M 460,60 L 580,80 L 550,300 L 430,250 L 410,150 Z"
-              class="sector-path"
-              onclick="selectState('ka')"
-            />
-            <text x="500" y="180" fill="white" font-size="10" text-anchor="middle" class="pointer-events-none opacity-50">KARNATAKA</text>
-
-          </svg>
+          <p class="mb-2">[LOG: 2026-02-03]</p>
+          <p class="mb-2">SCANNING REGIONAL DATABASES...</p>
+          <p class="mb-2">... NCRB DATASETS LINKED</p>
+          <p class="mb-2">... POLICE REPORTS INDEXED</p>
+          <p class="mb-2">... ANOMALIES DETECTED: 42,091</p>
+          <p class="animate-pulse mt-4">AWAITING USER INPUT...</p>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <!-- SECTION 4: WHAT IT PROVIDES -->
+    <section class="min-h-screen flex flex-col justify-center p-10 max-w-6xl mx-auto reveal-section">
+      <h3 class="text-4xl font-bold text-white mb-16 text-right border-b border-red-800 pb-4">
+        <span class="text-red-600">02</span> // ARCHIVE CONTENTS
+      </h3>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div
+          class="neon-card border border-neutral-800 bg-neutral-900/50 p-6 relative overflow-hidden group hover:border-red-600/50 transition-all duration-500 cursor-default">
+          <div class="absolute inset-0 bg-red-900/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          </div>
+          <div class="relative z-10">
+            <div class="text-4xl mb-4 opacity-50 group-hover:opacity-100 transition-opacity">📊</div>
+            <h4 class="text-xl font-bold text-white mb-2 font-tech">CRIME METRICS</h4>
+            <p class="text-sm text-gray-400">Detailed breakdown of incidents by category, severity, and demographic
+              impact.</p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div
+          class="neon-card border border-neutral-800 bg-neutral-900/50 p-6 relative overflow-hidden group hover:border-red-600/50 transition-all duration-500 cursor-default">
+          <div class="absolute inset-0 bg-red-900/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          </div>
+          <div class="relative z-10">
+            <div class="text-4xl mb-4 opacity-50 group-hover:opacity-100 transition-opacity">🗺️</div>
+            <h4 class="text-xl font-bold text-white mb-2 font-tech">GEOSPATIAL MAPPING</h4>
+            <p class="text-sm text-gray-400">Heatmaps and sector analysis identifying high-density criminal activity
+              zones.</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div
+          class="neon-card border border-neutral-800 bg-neutral-900/50 p-6 relative overflow-hidden group hover:border-red-600/50 transition-all duration-500 cursor-default">
+          <div class="absolute inset-0 bg-red-900/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          </div>
+          <div class="relative z-10">
+            <div class="text-4xl mb-4 opacity-50 group-hover:opacity-100 transition-opacity">📉</div>
+            <h4 class="text-xl font-bold text-white mb-2 font-tech">TREND FORECASTS</h4>
+            <p class="text-sm text-gray-400">Longitudinal data analysis to visualize the rise and fall of specific crime
+              types.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: FINAL STATEMENT -->
+    <section class="min-h-[50vh] flex flex-col items-center justify-center text-center p-10 reveal-section">
+      <div class="mb-8">
+        <svg class="w-16 h-16 text-red-600 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+        </svg>
+      </div>
+
+      <h2 class="text-3xl md:text-5xl font-black text-white tracking-widest leading-tight">
+        XYPHER IS NOT JUST DATA.
+      </h2>
+      <h2 class="text-3xl md:text-5xl font-black text-red-600 tracking-widest leading-tight glitch"
+        data-text="IT IS INTELLIGENCE.">
+        IT IS INTELLIGENCE.
+      </h2>
+
+      <div class="mt-12 text-xs font-tech text-gray-600">
+        // END OF FILE // SYSTEM DISCONNECT PENDING...
+      </div>
+    </section>
+
   </div>
 
   <!-- SCRIPT -->
-  <script>
-    // Data from crimes_against_women_2022.metrics.json, cyber_crime_2022.metrics.json, etc.
-    const stateData = {
-      mh: {
-        name: "MAHARASHTRA",
-        severity: "CRITICAL",
-        women: 45331,
-        cyber: 18532,
-        eco: 9200,
-        murder: 2100,
-        note: "Highest economic and cyber crime rates. Critical attention required in urban centers."
-      },
-      dl: {
-        name: "DELHI",
-        severity: "HIGH",
-        women: 15000, // Estimated based on typical stats
-        cyber: 15800,
-        eco: 7400,
-        murder: 505,
-        note: "Capital region. Extremely high density of cyber incidents."
-      },
-      ka: {
-        name: "KARNATAKA",
-        severity: "HIGH",
-        women: 17813,
-        cyber: 13421,
-        eco: 6900,
-        murder: 1020,
-        note: "Tech hub (Bangalore) drives high cyber crime statistics."
-      },
-      mp: {
-        name: "MADHYA PRADESH",
-        severity: "ELEVATED",
-        women: 32765,
-        cyber: 4300,
-        eco: 5300,
-        murder: 1980,
-        note: "Significant challenges in crimes against women and violent crimes."
-      },
-      gj: {
-        name: "GUJARAT",
-        severity: "MODERATE",
-        women: 7731,
-        cyber: 7400,
-        eco: 6100,
-        murder: 1120,
-        note: "Growing economic activity correlates with rising financial fraud cases."
-      }
-    };
-
-    function selectState(stateId) {
-      document.querySelectorAll(".sector-path").forEach(el => {
-        el.classList.remove("active");
-      });
-
-      const el = document.getElementById(`state-${stateId}`);
-      if(el) el.classList.add("active");
-
-      const data = stateData[stateId];
-      if (!data) return;
-
-      document.getElementById("info-name").innerText = data.name;
-      document.getElementById("info-severity").innerText = data.severity;
-      
-      // Color code severity
-      const sevEl = document.getElementById("info-severity");
-      if(data.severity === "CRITICAL") sevEl.className = "font-bold text-red-600";
-      else if(data.severity === "HIGH") sevEl.className = "font-bold text-orange-500";
-      else sevEl.className = "font-bold text-yellow-500";
-
-      document.getElementById("info-note").innerText = data.note;
-
-      // Update Bars
-      // Normalize bars against a theoretical max for visualization
-      const maxVal = 50000; 
-      
-      document.getElementById("val-women").innerText = data.women.toLocaleString();
-      document.getElementById("bar-women").style.width = `${Math.min((data.women / maxVal) * 100, 100)}%`;
-
-      document.getElementById("val-cyber").innerText = data.cyber.toLocaleString();
-      document.getElementById("bar-cyber").style.width = `${Math.min((data.cyber / maxVal) * 100, 100)}%`;
-
-      document.getElementById("val-eco").innerText = data.eco.toLocaleString();
-      document.getElementById("bar-eco").style.width = `${Math.min((data.eco / maxVal) * 100, 100)}%`;
-
-      document.getElementById("val-murder").innerText = data.murder.toLocaleString();
-      document.getElementById("bar-murder").style.width = `${Math.min((data.murder / 5000) * 100, 100)}%`; // Lower max for murder
-    }
-
-    // LOADING SCREEN SIMULATION
-    document.addEventListener("DOMContentLoaded", () => {
-      let progress = 0;
-
-      const interval = setInterval(() => {
-        progress += 1;
-
-        document.getElementById("progress-bar").style.width = `${progress}%`;
-        document.getElementById("loading-percent").innerText = `${progress}%`;
-
-        if (progress >= 100) {
-          clearInterval(interval);
-
-          document.getElementById("loading-screen").style.display = "none";
-
-          const main = document.getElementById("main-content");
-          main.classList.add("fade-in");
-
-          selectState("mh");
-        }
-      }, 100);
-    });
-  </script>
+  <script src="gemini-frontend.js"></script>
 </body>
+
 </html>

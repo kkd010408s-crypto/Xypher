@@ -1,13 +1,36 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import dynamic from "next/dynamic";
+import { HomeBackground } from "@/components/HomeBackground";
+
+// Dynamic import to avoid SSR issues
+const IndiaHeatmap = dynamic(() => import("@/components/IndiaSvgHeatmap"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex items-center justify-center h-[500px]">
+      <div className="text-red-500 font-tech animate-pulse text-xl">
+        LOADING MAP...
+      </div>
+    </div>
+  ),
+});
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
+  const [selectedCrime, setSelectedCrime] = useState("crimes_against_women");
+
+  const crimeOptions = [
+    { value: "crimes_against_women", label: "Crimes Against Women" },
+    { value: "cyber_crime", label: "Cyber Crimes" },
+    { value: "economic_crime", label: "Economic Crime" },
+    { value: "murder_homicide", label: "Murder/Homicide" },
+  ];
 
   useEffect(() => {
-    // LOADING SCREEN SIMULATION
+    // LOADING SCREEN - Always show for exactly 10 seconds
     let currentProgress = 0;
     const interval = setInterval(() => {
       currentProgress += 1;
@@ -17,7 +40,7 @@ export default function Home() {
         clearInterval(interval);
         setLoading(false);
       }
-    }, 50); // Speed up for dev testing, normally 100
+    }, 100); // 100 steps × 100ms = 10 seconds total loading time
 
     return () => clearInterval(interval);
   }, []);
@@ -49,7 +72,7 @@ export default function Home() {
       document
         .querySelectorAll(".reveal-section")
         .forEach((el) => observer.observe(el));
-        
+
       return () => observer.disconnect();
     }
   }, [loading]);
@@ -71,15 +94,17 @@ export default function Home() {
 
   return (
     <>
+      {/* Animated DitherShader Background */}
+      <HomeBackground />
+
       {/* Effects */}
       <div className="scanlines"></div>
 
       {/* LOADING SCREEN */}
       <div
         id="loading-screen"
-        className={`fixed inset-0 flex flex-col items-center justify-center bg-black z-50 ${
-          !loading ? "hidden" : ""
-        }`}
+        className={`fixed inset-0 flex flex-col items-center justify-center bg-black z-50 ${!loading ? "hidden" : ""
+          }`}
       >
         <div className="w-32 h-32 border-2 border-red-900/50 rounded-lg p-2 bg-neutral-900 fingerprint-scan">
           <svg
@@ -119,9 +144,8 @@ export default function Home() {
       {/* MAIN CONTENT */}
       <div
         id="main-content"
-        className={`min-h-screen relative z-10 overflow-hidden pb-20 ${
-          !loading ? "fade-in" : "hidden-content"
-        }`}
+        className={`min-h-screen relative z-10 overflow-hidden pb-20 ${!loading ? "fade-in" : "hidden-content"
+          }`}
       >
         {/* SECTION 1: INTRO */}
         <section className="min-h-screen flex flex-col items-center justify-center text-center p-6 relative">
@@ -279,30 +303,85 @@ export default function Home() {
           </div>
         </section>
 
-        {/* SECTION 5: FINAL STATEMENT */}
-        <section className="min-h-[50vh] flex flex-col items-center justify-center text-center p-10 reveal-section">
-          <div className="mb-8">
-            <svg
-              className="w-16 h-16 text-red-600 animate-pulse"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
-            </svg>
-          </div>
+        {/* SECTION 5: INDIA HEATMAP & ACCESS */}
+        <section className="min-h-screen flex flex-col justify-center p-10 max-w-7xl mx-auto reveal-section">
+          <h3 className="text-4xl font-bold text-white mb-8 text-center">
+            <span className="text-red-600">03</span> // GEOSPATIAL INTELLIGENCE
+          </h3>
 
-          <h2 className="text-3xl md:text-5xl font-black text-white tracking-widest leading-tight">
-            XYPHER IS NOT JUST DATA.
-          </h2>
-          <h2
-            className="text-3xl md:text-5xl font-black text-red-600 tracking-widest leading-tight glitch"
-            data-text="IT IS INTELLIGENCE."
-          >
-            IT IS INTELLIGENCE.
-          </h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            {/* Left Side: Heatmap */}
+            <div className="order-2 lg:order-1">
+              {/* Crime Type Selector */}
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-red-500 font-tech text-sm">{">"} SELECT CRIME:</span>
+                <select
+                  value={selectedCrime}
+                  onChange={(e) => setSelectedCrime(e.target.value)}
+                  className="bg-neutral-900 border border-red-900/50 text-white px-4 py-2 font-tech text-sm focus:outline-none focus:border-red-600 transition-all cursor-pointer hover:border-red-700"
+                >
+                  {crimeOptions.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
-          <div className="mt-12 text-xs font-tech text-gray-600">
-            // END OF FILE // SYSTEM DISCONNECT PENDING...
+              {/* Heatmap Component */}
+              <IndiaHeatmap crimeType={selectedCrime} />
+            </div>
+
+            {/* Right Side: Text & Button */}
+            <div className="order-1 lg:order-2 text-center lg:text-left">
+              <div className="mb-8">
+                <svg
+                  className="w-16 h-16 text-red-600 animate-pulse mx-auto lg:mx-0"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+                </svg>
+              </div>
+
+              <h2 className="text-3xl md:text-5xl font-black text-white tracking-widest leading-tight mb-4">
+                XYPHER IS NOT JUST DATA.
+              </h2>
+              <h2
+                className="text-3xl md:text-5xl font-black text-red-600 tracking-widest leading-tight glitch mb-8"
+                data-text="IT IS INTELLIGENCE."
+              >
+                IT IS INTELLIGENCE.
+              </h2>
+
+              <p className="text-gray-400 font-tech text-sm mb-8 max-w-md mx-auto lg:mx-0">
+                Explore crime patterns across all 28 states and 8 union territories.
+                Hover over any region to view detailed statistics.
+              </p>
+
+              {/* Dashboard Access Button */}
+              <div className="flex flex-col items-center lg:items-start gap-4 inline-flex">
+                <Link
+                  href="/dashboard"
+                  className="inline-block px-8 py-4 border-2 border-red-600 bg-black text-red-600 font-tech text-sm uppercase tracking-widest hover:bg-red-600 hover:text-black transition-all duration-300 relative overflow-hidden group w-full text-center lg:text-left"
+                >
+                  <span className="relative z-10">{">"} ACCESS DASHBOARD</span>
+                  <div className="absolute inset-0 bg-red-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                </Link>
+
+                <Link
+                  href="/developer-api"
+                  className="inline-block px-8 py-4 border-2 border-red-600 bg-black text-red-600 font-tech text-sm uppercase tracking-widest hover:bg-red-600 hover:text-black transition-all duration-300 relative overflow-hidden group w-full text-center lg:text-left"
+                >
+                  <span className="relative z-10">{">"} OPEN API DOCUMENTATION</span>
+                  <div className="absolute inset-0 bg-red-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                </Link>
+              </div>
+
+              <div className="mt-8 text-xs font-tech text-gray-600">
+                // END OF FILE // SYSTEM DISCONNECT PENDING...
+              </div>
+            </div>
           </div>
         </section>
       </div>

@@ -135,3 +135,26 @@ body {
 .radial-gradient {
   background: radial-gradient(circle, rgba(220, 38, 38, 0.1) 0%, rgba(5, 5, 5, 0) 70%);
 }
+
+/* Neon Select Dropdown */
+.neon-select {
+  box-shadow: 0 0 5px rgba(220, 38, 38, 0.3);
+  transition: all 0.3s ease;
+}
+
+.neon-select:hover {
+  box-shadow: 0 0 15px rgba(220, 38, 38, 0.6);
+}
+
+.neon-select:focus {
+  box-shadow: 0 0 20px rgba(220, 38, 38, 0.8);
+}
+
+/* Enhanced Chart Container Glow */
+.neon-card canvas {
+  filter: drop-shadow(0 0 10px rgba(220, 38, 38, 0.2));
+}
+
+.neon-card:hover canvas {
+  filter: drop-shadow(0 0 15px rgba(220, 38, 38, 0.4));
+}
