@@ -5,6 +5,9 @@ import Link from 'next/link';
 
 export default function DeveloperApiPage() {
     const [activeTab, setActiveTab] = useState('women');
+    const [playgroundCode, setPlaygroundCode] = useState("const response = await fetch('/api/crimes/women');\nconst data = await response.json();\nconsole.log(data);");
+    const [playgroundResult, setPlaygroundResult] = useState('');
+    const [isRunning, setIsRunning] = useState(false);
 
     const endpoints = [
         {
@@ -95,6 +98,30 @@ export default function DeveloperApiPage() {
         }
     ];
 
+    const runCode = async () => {
+        setIsRunning(true);
+        setPlaygroundResult('');
+
+        try {
+            // Create a safe execution context
+            // eslint-disable-next-line no-new-func
+            const executeFetch = new Function('fetch', `
+                return (async () => {
+                    ${playgroundCode}
+                    return data;
+                })();
+            `);
+
+            const result = await executeFetch(fetch);
+            setPlaygroundResult(JSON.stringify(result, null, 2));
+        } catch (error) {
+            const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+            setPlaygroundResult(`Error: ${errorMessage}`);
+        } finally {
+            setIsRunning(false);
+        }
+    };
+
     return (
         <div className="min-h-screen bg-black text-gray-300 p-8 font-mono selection:bg-[#ff3333] selection:text-white">
             {/* Background Effects */}
@@ -126,6 +153,60 @@ export default function DeveloperApiPage() {
                     </div>
                 </header>
 
+                {/* Interactive Playground */}
+                <div className="mb-12 border border-red-600/30 bg-gradient-to-br from-red-950/10 to-black rounded-lg p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                        <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                        <h2 className="text-2xl font-black text-white tracking-tight font-tech">LIVE_API_PLAYGROUND</h2>
+                        <span className="text-xs text-gray-500 ml-auto">Try it live →</span>
+                    </div>
+
+                    <p className="text-gray-400 mb-6 text-sm">
+                        Test API endpoints directly in your browser. Edit the code and click Run to see live results.
+                    </p>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        {/* Code Editor */}
+                        <div>
+                            <div className="flex items-center justify-between mb-2">
+                                <label className="text-xs text-gray-500 uppercase tracking-wider">Code Editor</label>
+                                <button
+                                    onClick={runCode}
+                                    disabled={isRunning}
+                                    className="px-4 py-2 bg-red-600 hover:bg-red-700 disabled:bg-gray-700 text-white font-tech text-xs uppercase tracking-wider transition-all duration-300 disabled:cursor-not-allowed flex items-center gap-2"
+                                >
+                                    {isRunning ? (
+                                        <>
+                                            <div className="w-3 h-3 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                                            RUNNING...
+                                        </>
+                                    ) : (
+                                        <>▶ RUN CODE</>
+                                    )}
+                                </button>
+                            </div>
+                            <textarea
+                                value={playgroundCode}
+                                onChange={(e) => setPlaygroundCode(e.target.value)}
+                                className="w-full h-48 bg-black border border-gray-800 text-green-400 p-4 font-mono text-sm rounded focus:outline-none focus:border-red-600 transition-colors resize-none"
+                                spellCheck={false}
+                            />
+                        </div>
+
+                        {/* Results Display */}
+                        <div>
+                            <label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Live Results</label>
+                            <div className="w-full h-48 bg-black border border-gray-800 text-gray-300 p-4 font-mono text-xs rounded overflow-auto custom-scrollbar">
+                                {playgroundResult ? (
+                                    <pre className="whitespace-pre-wrap">{playgroundResult}</pre>
+                                ) : (
+                                    <div className="text-gray-600 italic">Results will appear here...</div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
                     {/* Navigation Sidebar */}
                     <div className="lg:col-span-1 space-y-2">
@@ -135,8 +216,8 @@ export default function DeveloperApiPage() {
                                 key={ep.id}
                                 onClick={() => setActiveTab(ep.id)}
                                 className={`w-full text-left px-4 py-3 text-sm transition-all border-l-2 ${activeTab === ep.id
-                                        ? 'border-[#ff3333] bg-[#ff3333]/10 text-white font-bold'
-                                        : 'border-transparent text-gray-500 hover:text-gray-300 hover:bg-white/5'
+                                    ? 'border-[#ff3333] bg-[#ff3333]/10 text-white font-bold'
+                                    : 'border-transparent text-gray-500 hover:text-gray-300 hover:bg-white/5'
                                     }`}
                             >
                                 {ep.name}

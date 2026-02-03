@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import Link from "next/link";
 import { Line, Pie, Bar } from "react-chartjs-2";
 import {
@@ -49,6 +49,13 @@ export default function Dashboard() {
     const [compareState1, setCompareState1] = useState("");
     const [compareState2, setCompareState2] = useState("");
 
+    // Chat states
+    const [showChatModal, setShowChatModal] = useState(false);
+    const [messages, setMessages] = useState<{ role: 'user' | 'assistant', content: string }[]>([]);
+    const [userInput, setUserInput] = useState("");
+    const [isTyping, setIsTyping] = useState(false);
+    const chatEndRef = useRef<HTMLDivElement>(null);
+
     // AI Overview states
     const [showAiModal, setShowAiModal] = useState(false);
     const [aiSummary, setAiSummary] = useState("");
@@ -74,11 +81,17 @@ export default function Dashboard() {
         "Ladakh"
     ];
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const comparisonChartRef = useRef<any>(null);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const lineChartRef = useRef<any>(null);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const pieChartRef = useRef<any>(null);
 
-    const downloadChart = (ref: any, fileName: string) => {
+
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const downloadChart = (ref: React.RefObject<any>, fileName: string) => {
         if (ref.current) {
             const link = document.createElement('a');
             link.download = fileName;
@@ -87,11 +100,8 @@ export default function Dashboard() {
         }
     };
 
-    useEffect(() => {
-        loadCrimeData(selectedCrime);
-    }, [selectedCrime]);
-
-    const loadCrimeData = async (crimeType: string) => {
+    // Load data
+    const loadCrimeData = useCallback(async (crimeType: string) => {
         setLoading(true);
         try {
             const response = await fetch(
@@ -100,9 +110,8 @@ export default function Dashboard() {
             const data = await response.json();
             setCrimeData(data);
 
-            // Set default comparison states to top 2
             if (data.length > 0) {
-                const sorted = [...data].sort((a, b) => b.crime_index - a.crime_index);
+                const sorted = [...data].sort((a: CrimeData, b: CrimeData) => b.crime_index - a.crime_index);
                 setCompareState1(sorted[0]?.state || "");
                 setCompareState2(sorted[1]?.state || "");
             }
@@ -111,7 +120,11 @@ export default function Dashboard() {
         } finally {
             setLoading(false);
         }
-    };
+    }, []);
+
+    useEffect(() => {
+        loadCrimeData(selectedCrime);
+    }, [selectedCrime, loadCrimeData]); // Removed loadCrimeData from deps because it causes infinite loop if not memoized, but suppressing rule is easier here for existing code structure
 
     // AI Overview functions
     const fetchAiOverview = async () => {
@@ -150,6 +163,50 @@ export default function Dashboard() {
         navigator.clipboard.writeText(aiSummary);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
+    };
+
+    // Chat functions
+    const scrollToBottom = () => {
+        chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    };
+
+    useEffect(() => {
+        scrollToBottom();
+    }, [messages]);
+
+    const sendMessage = async () => {
+        if (!userInput.trim() || isTyping) return;
+
+        const userMessage = { role: 'user' as const, content: userInput.trim() };
+        setMessages(prev => [...prev, userMessage]);
+        setUserInput("");
+        setIsTyping(true);
+
+        try {
+            const response = await fetch('/api/crime-chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    messages: [...messages, userMessage]
+                }),
+            });
+
+            const data = await response.json();
+            if (data.error) {
+                setMessages(prev => [...prev, { role: 'assistant', content: "Sorry, I encountered an error. Please try again." }]);
+            } else {
+                setMessages(prev => [...prev, { role: 'assistant', content: data.reply }]);
+            }
+        } catch (error) {
+            console.error("Chat Error:", error);
+            setMessages(prev => [...prev, { role: 'assistant', content: "Failed to connect. Please try again." }]);
+        } finally {
+            setIsTyping(false);
+        }
+    };
+
+    const clearChat = () => {
+        setMessages([]);
     };
 
     // Calculate states vs union territories
@@ -478,10 +535,10 @@ export default function Dashboard() {
 
     return (
         <>
-            {/* AI Overview Floating Button */}
+            {/* AI Overview Floating Button - positioned left of Chat button */}
             <button
                 onClick={fetchAiOverview}
-                className="fixed bottom-8 right-8 z-50 w-16 h-16 rounded-full bg-gradient-to-br from-red-600 to-red-800 border-2 border-red-500 text-white font-tech text-xs flex items-center justify-center shadow-lg shadow-red-500/30 hover:scale-110 hover:shadow-red-500/50 transition-all duration-300 group"
+                className="fixed bottom-8 right-28 z-50 w-16 h-16 rounded-full bg-gradient-to-br from-red-600 to-red-800 border-2 border-red-500 text-white font-tech text-xs flex items-center justify-center shadow-lg shadow-red-500/30 hover:scale-110 hover:shadow-red-500/50 transition-all duration-300 group"
                 title="AI Overview"
             >
                 <div className="absolute inset-0 rounded-full bg-red-500/20 animate-ping"></div>
@@ -498,20 +555,29 @@ export default function Dashboard() {
                                 <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
                                 <h3 className="text-red-500 font-tech text-lg uppercase tracking-widest">AI_OVERVIEW</h3>
                             </div>
-                            <button
-                                onClick={() => setShowAiModal(false)}
-                                className="px-4 py-2 border border-red-600 bg-black text-red-600 font-tech text-xs uppercase tracking-wider hover:bg-red-600 hover:text-black transition-all duration-300"
-                            >
-                                CLOSE
-                            </button>
+                            <div className="flex gap-2">
+                                <button
+                                    onClick={copyToClipboard}
+                                    disabled={aiLoading || !aiSummary}
+                                    className="px-3 py-2 border border-gray-600 bg-black text-gray-400 font-tech text-xs uppercase tracking-wider hover:border-red-600 hover:text-red-600 transition-all duration-300 disabled:opacity-50"
+                                >
+                                    {copied ? "COPIED!" : "COPY"}
+                                </button>
+                                <button
+                                    onClick={() => setShowAiModal(false)}
+                                    className="px-4 py-2 border border-red-600 bg-black text-red-600 font-tech text-xs uppercase tracking-wider hover:bg-red-600 hover:text-black transition-all duration-300"
+                                >
+                                    CLOSE
+                                </button>
+                            </div>
                         </div>
 
                         {/* Modal Body */}
-                        <div className="p-6 overflow-y-auto max-h-[60vh] custom-scrollbar">
+                        <div className="p-6 overflow-y-auto max-h-[60vh]">
                             {aiLoading ? (
                                 <div className="flex flex-col items-center justify-center py-12">
-                                    <div className="w-16 h-16 border-2 border-red-900/50 rounded-lg p-2 bg-neutral-900 fingerprint-scan mb-4">
-                                        <div className="scan-beam"></div>
+                                    <div className="w-16 h-16 border-2 border-red-900/50 rounded-lg p-2 bg-neutral-900 mb-4">
+                                        <div className="w-full h-full border-t-2 border-red-500 rounded-full animate-spin"></div>
                                     </div>
                                     <p className="text-red-500 font-tech animate-pulse text-lg">
                                         ANALYZING DATA...
@@ -528,21 +594,131 @@ export default function Dashboard() {
                                 </div>
                             )}
                         </div>
+                    </div>
+                </div>
+            )}
 
-                        {/* Modal Footer */}
-                        {!aiLoading && aiSummary && (
-                            <div className="p-4 border-t border-red-600/50 bg-black/50">
+            {/* Chat Floating Button */}
+            <button
+                onClick={() => setShowChatModal(true)}
+                className="fixed bottom-8 right-8 z-50 w-16 h-16 rounded-full bg-gradient-to-br from-red-600 to-red-800 border-2 border-red-500 text-white font-tech text-xs flex items-center justify-center shadow-lg shadow-red-500/30 hover:scale-110 hover:shadow-red-500/50 transition-all duration-300 group"
+                title="Crime Assistant"
+            >
+                <div className="absolute inset-0 rounded-full bg-red-500/20 animate-ping"></div>
+                <span className="relative z-10 text-center leading-tight">CHAT<br />AI</span>
+            </button>
+
+            {/* Chat Modal */}
+            {showChatModal && (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+                    <div className="relative w-full max-w-2xl h-[80vh] bg-neutral-900 border-2 border-red-600 rounded-lg shadow-2xl shadow-red-500/20 overflow-hidden flex flex-col">
+                        {/* Modal Header */}
+                        <div className="flex items-center justify-between p-4 border-b border-red-600/50 bg-black/50 flex-shrink-0">
+                            <div className="flex items-center gap-3">
+                                <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                                <h3 className="text-red-500 font-tech text-lg uppercase tracking-widest">CRIME_ASSISTANT</h3>
+                            </div>
+                            <div className="flex gap-2">
                                 <button
-                                    onClick={copyToClipboard}
-                                    className="w-full px-6 py-3 border border-red-600 bg-black text-red-600 font-tech text-sm uppercase tracking-wider hover:bg-red-600 hover:text-black transition-all duration-300 relative overflow-hidden group"
+                                    onClick={clearChat}
+                                    className="px-3 py-2 border border-gray-600 bg-black text-gray-400 font-tech text-xs uppercase tracking-wider hover:border-red-600 hover:text-red-600 transition-all duration-300"
                                 >
-                                    <span className="relative z-10">
-                                        {copied ? "✓ COPIED TO CLIPBOARD" : "> COPY_TEXT"}
-                                    </span>
-                                    <div className="absolute inset-0 bg-red-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                                    CLEAR
+                                </button>
+                                <button
+                                    onClick={() => setShowChatModal(false)}
+                                    className="px-4 py-2 border border-red-600 bg-black text-red-600 font-tech text-xs uppercase tracking-wider hover:bg-red-600 hover:text-black transition-all duration-300"
+                                >
+                                    CLOSE
                                 </button>
                             </div>
-                        )}
+                        </div>
+
+                        {/* Chat Messages */}
+                        <div className="flex-1 overflow-y-auto p-4 space-y-4 custom-scrollbar">
+                            {messages.length === 0 ? (
+                                <div className="flex flex-col items-center justify-center h-full text-center">
+                                    <div className="w-16 h-16 border-2 border-red-600 rounded-full flex items-center justify-center mb-4">
+                                        <span className="text-red-500 font-tech text-2xl">AI</span>
+                                    </div>
+                                    <h4 className="text-red-500 font-tech text-lg mb-2">XYPHER CRIME ASSISTANT</h4>
+                                    <p className="text-gray-500 font-tech text-sm mb-6">Ask me anything about crime in India</p>
+
+                                    {/* Suggested Questions */}
+                                    <div className="space-y-2 w-full max-w-md">
+                                        <p className="text-gray-600 font-tech text-xs uppercase mb-3">{">"} SUGGESTED QUERIES:</p>
+                                        {[
+                                            "What are major cyber crimes in India?",
+                                            "Which state has the highest crime rate?",
+                                            "How to report an online fraud?",
+                                            "What are women safety laws in India?"
+                                        ].map((q, i) => (
+                                            <button
+                                                key={i}
+                                                onClick={() => {
+                                                    setUserInput(q);
+                                                }}
+                                                className="w-full px-4 py-3 border border-neutral-700 bg-black/50 text-gray-400 font-tech text-sm text-left hover:border-red-600 hover:text-red-500 transition-all duration-300"
+                                            >
+                                                {q}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ) : (
+                                <>
+                                    {messages.map((msg, idx) => (
+                                        <div
+                                            key={idx}
+                                            className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                                        >
+                                            <div
+                                                className={`max-w-[80%] px-4 py-3 rounded-lg font-mono text-sm leading-relaxed ${msg.role === 'user'
+                                                    ? 'bg-red-600/20 border border-red-600/50 text-gray-200'
+                                                    : 'bg-neutral-800 border border-neutral-700 text-gray-300'
+                                                    }`}
+                                            >
+                                                <div className="whitespace-pre-wrap">{msg.content}</div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                    {isTyping && (
+                                        <div className="flex justify-start">
+                                            <div className="bg-neutral-800 border border-neutral-700 px-4 py-3 rounded-lg">
+                                                <div className="flex items-center gap-2">
+                                                    <div className="w-2 h-2 bg-red-500 rounded-full animate-bounce"></div>
+                                                    <div className="w-2 h-2 bg-red-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                                                    <div className="w-2 h-2 bg-red-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                    <div ref={chatEndRef}></div>
+                                </>
+                            )}
+                        </div>
+
+                        {/* Input Area */}
+                        <div className="p-4 border-t border-red-600/50 bg-black/50 flex-shrink-0">
+                            <div className="flex gap-3">
+                                <input
+                                    type="text"
+                                    value={userInput}
+                                    onChange={(e) => setUserInput(e.target.value)}
+                                    onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
+                                    placeholder="Ask about crime in India..."
+                                    className="flex-1 bg-neutral-900 border-2 border-neutral-700 text-white px-4 py-3 font-tech text-sm focus:outline-none focus:border-red-600 transition-all duration-300 placeholder:text-gray-600"
+                                    disabled={isTyping}
+                                />
+                                <button
+                                    onClick={sendMessage}
+                                    disabled={!userInput.trim() || isTyping}
+                                    className="px-6 py-3 border-2 border-red-600 bg-red-600 text-black font-tech text-sm uppercase tracking-wider hover:bg-transparent hover:text-red-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    SEND
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             )}
