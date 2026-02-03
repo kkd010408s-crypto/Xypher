@@ -1,0 +1,311 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
+export default function Home() {
+  const [loading, setLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    // LOADING SCREEN SIMULATION
+    let currentProgress = 0;
+    const interval = setInterval(() => {
+      currentProgress += 1;
+      setProgress(currentProgress);
+
+      if (currentProgress >= 100) {
+        clearInterval(interval);
+        setLoading(false);
+      }
+    }, 50); // Speed up for dev testing, normally 100
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (!loading) {
+      // Init Animations
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("reveal-visible");
+
+              // Check if this is the typewriter section
+              const typewriterEl = entry.target.querySelector("#typewriter-text");
+              if (typewriterEl && !typewriterEl.getAttribute("data-typed")) {
+                typeWriterEffect(
+                  typewriterEl as HTMLElement,
+                  "Xypher is a crime intelligence platform that organizes and visualizes Indian crime data into meaningful insights."
+                );
+                typewriterEl.setAttribute("data-typed", "true");
+              }
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      document
+        .querySelectorAll(".reveal-section")
+        .forEach((el) => observer.observe(el));
+        
+      return () => observer.disconnect();
+    }
+  }, [loading]);
+
+  function typeWriterEffect(element: HTMLElement, text: string) {
+    let i = 0;
+    element.innerHTML = ""; // Clear initial
+    const speed = 30; // ms per char
+
+    function type() {
+      if (i < text.length) {
+        element.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, speed);
+      }
+    }
+    type();
+  }
+
+  return (
+    <>
+      {/* Effects */}
+      <div className="scanlines"></div>
+
+      {/* LOADING SCREEN */}
+      <div
+        id="loading-screen"
+        className={`fixed inset-0 flex flex-col items-center justify-center bg-black z-50 ${
+          !loading ? "hidden" : ""
+        }`}
+      >
+        <div className="w-32 h-32 border-2 border-red-900/50 rounded-lg p-2 bg-neutral-900 fingerprint-scan">
+          <svg
+            className="w-full h-full text-red-700"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="M17.81 4.47c-.08 0-.16-.02-.23-.06C15.66 3.42 14 3 12.01 3c-1.98 0-3.86.47-5.57 1.41-.24.13-.54.04-.68-.2-.13-.24-.04-.55.2-.68C7.82 2.52 9.86 2 12.01 2c2.13 0 3.99.47 6.03 1.52.25.13.34.43.21.67-.09.18-.26.28-.44.28zM3.5 9.72c-.1 0-.2-.03-.29-.09-.23-.16-.28-.47-.12-.7.99-1.4 2.25-2.5 3.75-3.27C9.98 4.04 14 4.03 17.15 5.65c1.5.77 2.76 1.86 3.75 3.25.16.22.11.54-.12.7-.23.16-.54.11-.7-.12-.9-1.26-2.04-2.25-3.39-2.94-2.87-1.47-6.54-1.47-9.4.01-1.36.7-2.5 1.7-3.4 2.96-.08.14-.23.21-.39.21zm6.25 12.07c-.13 0-.26-.05-.35-.15-.87-.87-1.34-1.43-2.01-2.64-.69-1.23-1.05-2.73-1.05-4.34 0-2.97 2.54-5.39 5.66-5.39s5.66 2.42 5.66 5.39c0 .28-.22.5-.5.5s-.5-.22-.5-.5c0-2.42-2.09-4.39-4.66-4.39-2.57 0-4.66 1.97-4.66 4.39 0 1.44.32 2.77.93 3.85.64 1.15 1.08 1.64 1.85 2.42.19.2.19.51 0 .71-.11.1-.24.15-.37.15zm7.17-1.85c-1.19 0-2.24-.3-3.1-.89-1.49-1.01-2.38-2.65-2.38-4.39 0-.28.22-.5.5-.5s.5.22.5.5c0 1.41.72 2.74 1.94 3.56.71.48 1.54.71 2.54.71.24 0 .64-.03 1.04-.1.27-.05.53.13.58.41.05.27-.13.53-.41.58-.57.11-1.07.12-1.21.12zM14.91 22c-.04 0-.09-.01-.13-.02-1.59-.44-2.63-1.03-3.72-2.1-1.4-1.39-2.17-3.24-2.17-5.22 0-1.62 1.38-2.94 3.08-2.94 1.7 0 3.08 1.32 3.08 2.94 0 1.07.93 1.94 2.08 1.94s2.08-.87 2.08-1.94c0-3.77-3.25-6.83-7.25-6.83-2.84 0-5.44 1.58-6.61 4.03-.39.81-.59 1.76-.59 2.8 0 .78.07 2.01.67 3.61.1.26-.03.55-.29.64-.26.1-.55-.03-.64-.29-.49-1.31-.73-2.61-.73-3.96 0-1.2.23-2.29.68-3.24 1.33-2.79 4.28-4.6 7.51-4.6 4.55 0 8.25 3.51 8.25 7.83 0 1.62-1.38 2.94-3.08 2.94s-3.08-1.32-3.08-2.94c0-1.07-.93-1.94-2.08-1.94s-2.08.87-2.08 1.94c0 1.71.66 3.31 1.87 4.51.95.94 1.86 1.46 3.27 1.85.27.07.42.35.35.61-.05.23-.26.38-.47.38z" />
+          </svg>
+          <div className="scan-beam"></div>
+        </div>
+
+        <h1
+          className="text-3xl font-tech text-red-600 font-bold mt-6 glitch"
+          data-text="CRIME_DB"
+        >
+          CRIME_DB
+        </h1>
+
+        <p id="loading-stage" className="text-red-500 mt-2 text-sm">
+          Initializing...
+        </p>
+
+        <div className="w-64 h-2 bg-neutral-800 mt-4">
+          <div
+            id="progress-bar"
+            className="h-full bg-red-600 transition-all duration-200"
+            style={{ width: `${progress}%` }}
+          ></div>
+        </div>
+
+        <p id="loading-percent" className="text-xs text-gray-400 mt-2">
+          {progress}%
+        </p>
+      </div>
+
+      {/* MAIN CONTENT */}
+      <div
+        id="main-content"
+        className={`min-h-screen relative z-10 overflow-hidden pb-20 ${
+          !loading ? "fade-in" : "hidden-content"
+        }`}
+      >
+        {/* SECTION 1: INTRO */}
+        <section className="min-h-screen flex flex-col items-center justify-center text-center p-6 relative">
+          <div className="absolute inset-0 bg-red-900/5 radial-gradient pointer-events-none"></div>
+
+          <h1
+            className="text-7xl md:text-9xl font-black text-red-600 tracking-tighter glitch mb-4"
+            data-text="XYPHER"
+          >
+            XYPHER
+          </h1>
+
+          <h2 className="text-xl md:text-2xl text-gray-400 font-tech tracking-widest uppercase mb-12">
+            India Crime Intelligence Archive
+          </h2>
+
+          <div className="font-mono text-red-500 text-sm md:text-base animate-pulse">
+            {">"}{" "}
+            <span id="terminal-intro">ACCESSING CLASSIFIED RECORDS...</span>
+            <span className="animate-ping">_</span>
+          </div>
+
+          <div className="absolute bottom-10 animate-bounce text-gray-600">
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              ></path>
+            </svg>
+          </div>
+        </section>
+
+        {/* SECTION 2: WHAT IS XYPHER */}
+        <section className="min-h-[60vh] flex items-center justify-center p-10 max-w-4xl mx-auto border-l border-red-900/30 pl-10 reveal-section">
+          <div className="space-y-6">
+            <div className="flex items-center space-x-2 text-red-500 font-tech text-xs">
+              <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+              <span>SYSTEM_ID: 884-X</span>
+            </div>
+            <p className="text-xl md:text-3xl leading-relaxed text-gray-300 font-mono">
+              <span id="typewriter-text" className="typewriter-cursor"></span>
+            </p>
+          </div>
+        </section>
+
+        {/* SECTION 3: WHY IT EXISTS */}
+        <section className="min-h-[80vh] flex flex-col justify-center p-10 max-w-5xl mx-auto reveal-section">
+          <h3 className="text-4xl font-bold text-white mb-12 border-b border-red-800 pb-4 inline-block w-fit">
+            <span className="text-red-600">01</span> // MISSION PROTOCOL
+          </h3>
+
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="space-y-8">
+              <div className="group cursor-default">
+                <h4 className="text-xl text-red-500 font-tech mb-2 group-hover:text-red-400 transition-colors">
+                  {">"} DECRYPTING PATTERNS
+                </h4>
+                <p className="text-gray-400 leading-relaxed border-l-2 border-red-900/50 pl-4 group-hover:border-red-500 transition-all">
+                  Crime patterns remain hidden in raw unstructured data. Xypher
+                  uses advanced algorithms to isolate anomalies and detect
+                  behavioral shifts.
+                </p>
+              </div>
+              <div className="group cursor-default">
+                <h4 className="text-xl text-red-500 font-tech mb-2 group-hover:text-red-400 transition-colors">
+                  {">"} PREDICTIVE INTELLIGENCE
+                </h4>
+                <p className="text-gray-400 leading-relaxed border-l-2 border-red-900/50 pl-4 group-hover:border-red-500 transition-all">
+                  Moving beyond static reports. We visualize trends to forecast
+                  potential hotspots and systemic vulnerabilities.
+                </p>
+              </div>
+            </div>
+
+            <div className="relative border border-red-900/30 bg-black/50 p-6 font-tech text-xs text-red-400/80">
+              <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-red-500"></div>
+              <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-red-500"></div>
+              <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-red-500"></div>
+              <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-red-500"></div>
+
+              <p className="mb-2">[LOG: 2026-02-03]</p>
+              <p className="mb-2">SCANNING REGIONAL DATABASES...</p>
+              <p className="mb-2">... NCRB DATASETS LINKED</p>
+              <p className="mb-2">... POLICE REPORTS INDEXED</p>
+              <p className="mb-2">... ANOMALIES DETECTED: 42,091</p>
+              <p className="animate-pulse mt-4">AWAITING USER INPUT...</p>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 4: WHAT IT PROVIDES */}
+        <section className="min-h-screen flex flex-col justify-center p-10 max-w-6xl mx-auto reveal-section">
+          <h3 className="text-4xl font-bold text-white mb-16 text-right border-b border-red-800 pb-4">
+            <span className="text-red-600">02</span> // ARCHIVE CONTENTS
+          </h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Card 1 */}
+            <div className="neon-card border border-neutral-800 bg-neutral-900/50 p-6 relative overflow-hidden group hover:border-red-600/50 transition-all duration-500 cursor-default">
+              <div className="absolute inset-0 bg-red-900/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative z-10">
+                <div className="text-4xl mb-4 opacity-50 group-hover:opacity-100 transition-opacity">
+                  📊
+                </div>
+                <h4 className="text-xl font-bold text-white mb-2 font-tech">
+                  CRIME METRICS
+                </h4>
+                <p className="text-sm text-gray-400">
+                  Detailed breakdown of incidents by category, severity, and
+                  demographic impact.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="neon-card border border-neutral-800 bg-neutral-900/50 p-6 relative overflow-hidden group hover:border-red-600/50 transition-all duration-500 cursor-default">
+              <div className="absolute inset-0 bg-red-900/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative z-10">
+                <div className="text-4xl mb-4 opacity-50 group-hover:opacity-100 transition-opacity">
+                  🗺️
+                </div>
+                <h4 className="text-xl font-bold text-white mb-2 font-tech">
+                  GEOSPATIAL MAPPING
+                </h4>
+                <p className="text-sm text-gray-400">
+                  Heatmaps and sector analysis identifying high-density criminal
+                  activity zones.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="neon-card border border-neutral-800 bg-neutral-900/50 p-6 relative overflow-hidden group hover:border-red-600/50 transition-all duration-500 cursor-default">
+              <div className="absolute inset-0 bg-red-900/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative z-10">
+                <div className="text-4xl mb-4 opacity-50 group-hover:opacity-100 transition-opacity">
+                  📉
+                </div>
+                <h4 className="text-xl font-bold text-white mb-2 font-tech">
+                  TREND FORECASTS
+                </h4>
+                <p className="text-sm text-gray-400">
+                  Longitudinal data analysis to visualize the rise and fall of
+                  specific crime types.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 5: FINAL STATEMENT */}
+        <section className="min-h-[50vh] flex flex-col items-center justify-center text-center p-10 reveal-section">
+          <div className="mb-8">
+            <svg
+              className="w-16 h-16 text-red-600 animate-pulse"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+            </svg>
+          </div>
+
+          <h2 className="text-3xl md:text-5xl font-black text-white tracking-widest leading-tight">
+            XYPHER IS NOT JUST DATA.
+          </h2>
+          <h2
+            className="text-3xl md:text-5xl font-black text-red-600 tracking-widest leading-tight glitch"
+            data-text="IT IS INTELLIGENCE."
+          >
+            IT IS INTELLIGENCE.
+          </h2>
+
+          <div className="mt-12 text-xs font-tech text-gray-600">
+            // END OF FILE // SYSTEM DISCONNECT PENDING...
+          </div>
+        </section>
+      </div>
+    </>
+  );
+}
